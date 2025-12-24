@@ -1,0 +1,51 @@
+#FLORES AYACAYA BLANCA BEATRIZ --- UNIDAD II
+# Program del Metodo de Runge-kutta de 4to Orden (RK4)
+# Ejemplo: dy/dx = x + y, con y(0) = 1
+
+# Definir la funcion f(x,y) = x + y....
+def f(x, y):
+    resultado = x + y;
+    return resultado;
+
+# Datos iniciale del problema
+x0 = 0.0;
+y0 = 1.0;
+h = 0.1;
+xf = 0.2;
+
+# Valores al comienzo...actuales
+x = x0;
+y = y0;
+
+print("Metodo de Runge-Kutta de 4to Orden");
+print("----------------------------");
+print("Solucion de dy/dx = x + y");
+print("Condicion inicial: y(0) = 1");
+print("Paso h =", h);# tamaño del paso 
+
+#print(f"x ={x}  y y={y}  ");
+print(x, "          ", y);
+
+
+while x < xf:  
+      # Calcular k1
+      k1 = f(x, y);
+      
+      # Calcular k2
+      k2 = f(x + h/2, y + k1*h/2);
+      
+        # Calcular k3
+      k3 = f(x + h/2, y + k2*h/2);
+        # Calcular k4
+      k4 = f(x + h, y + k3*h);
+      
+      # Calcular el nuevp valor de y
+      y = y + (h/6) * (k1 + 2*k2 + 2*k3 + k4);
+      
+      # Avasnzar x
+      x = x + h;
+      
+      # Mostrar el resultado
+      print(x, "          ", y);
+
+print(" El resultado final: y(", xf, ") =", y);
