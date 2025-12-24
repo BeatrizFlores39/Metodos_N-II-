@@ -1,0 +1,59 @@
+#FLORES AYACYA BLANCA BEATRIZ --- UNIDAD II
+# Metodo de Diferencias Finitas (Newton hacia Adelante)
+# Ejemplo: encontrar f(2.5)
+
+print("Metodo de Newton - Diferencias Finitas");
+print("----------------------------------");
+
+# Datos del problema... En lista porque es mas adecuado
+x = [1, 2, 3, 4];
+y = [1, 8, 27, 64];
+
+# Calcular h (espaciamiento)
+h = x[1] - x[0];
+print("Espaciamiento h =", h);
+
+
+# Calcular primera diferencia...a
+dif1 = [];
+dif1.append(y[1] - y[0]);
+dif1.append(y[2] - y[1]);
+dif1.append(y[3] - y[2]);
+
+print("Primera diferencia:", dif1);
+
+# Calcular segunda diferencia....b
+dif2 = []
+dif2.append(dif1[1] - dif1[0]);
+dif2.append(dif1[2] - dif1[1]);
+
+print("Segunda diferencia:", dif2);
+
+# Calcular tercera diferencia...c
+dif3 = [];
+dif3.append(dif2[1] - dif2[0]);
+
+print("Tercera diferencia:", dif3);
+
+
+# Valor a interpolar
+val_x = 2.5;
+print("Calcular f(", val_x, ")");
+
+# Calcular u...u= (x - x0)/h
+u = (val_x - x[0]) / h;
+print("u =", u);
+
+
+# Aplicar formula de Newton hacia adelante
+# P(x) = y0 + u*dif1 + u(u-1)/2*dif2 + u(u-1)(u-2)/6*dif3...Tha formul
+
+termino1 = y[0];
+termino2 = u * dif1[0];
+termino3 = (u * (u - 1) / 2) * dif2[0];
+termino4 = (u * (u - 1) * (u - 2) / 6) * dif3[0]
+
+resultado = termino1 + termino2 + termino3 + termino4;
+
+print("Resultado:");
+print("f(", val_x, ") =", resultado);
