@@ -1,0 +1,48 @@
+# EJERCICIO: METODO DE SIMPSON 3/8
+
+import math
+# Definimos la funcion (ejemplo: e^x)
+def f(x):
+    return math.exp(x);
+
+print("--- METODO DE SIMPSON 3/8 ---");
+
+# PASO 1: Limites de nuestrp ...
+a = 0;
+b = 1;
+
+# PASO 2: Numero de intervalos (DEBE SER MULTIPLO DE 3)
+n = 3;
+if n % 3 != 0:
+    print("ERROR: Para Simpson 3/8, 'n' debe ser multiplo de 3 (3, 6, 9...).");
+else:
+    # PASO 3: Calcular h
+    h = (b - a) / n;
+    print(f"El valor de h es: {h}");
+
+    # PASO 4: Sum
+    #   extremos(No se multiplia pr 2)
+    suma = f(a) + f(b);
+    print(f"Suma extremos: {suma}");
+
+    #   intermedios
+    for i in range(1, n):
+        xi = a + (i * h);
+        valor_y = f(xi);
+
+        # Regla: Si el indice "i" es multiplo de 3, multiplicamos por 2.
+        # Si nop, multiplicamos por 3.
+        
+        if i % 3 == 0:
+                suma = suma + (2 * valor_y);
+                print(f"Nodo {i} (Multiplo de 3): x={xi} -> Multiplicado por 2");
+        else:
+                suma = suma + (3 * valor_y);
+                print(f"Nodo {i} (Normal):x={xi} -> Multiplicado por 3"); #si no
+
+    # PASO 5: Resultado final (multiplicar por 3h/8)
+    resultado = (3 * h / 8) * suma;
+
+    print("--------------------------------");
+    print(f"El resultado aproximado es: {resultado}");
+    
