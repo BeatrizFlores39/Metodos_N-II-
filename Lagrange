@@ -1,0 +1,48 @@
+# EJERCICIO: METODO DE LAGRANSH...2DA UNIDAD
+# Ejemplo 2 del documento (puntos 1, 2 y 4)
+
+# 1. Ingresamos los datos que ya conocimos (los del ejemplo pdf..)
+x0 = 1;
+y0 = 2;
+
+x1 = 2;
+y1 = 3;
+
+x2 = 4;
+y2 = 5;
+
+# NOTa: Para que el programa funcione, necesitamos un valor para X,
+# Si no le damos un valor a X, en python no puede calcular la formula....
+# Vamos a pedirm que el usuario quelo escriba...manualmente:
+print("--- Calculadora lagrange basico --");
+x = float(input("Escribe el valor de X para que quieres calcular: "));
+
+# 2. Paso dos: Calcular los L
+# Aqui trate de traducir los procdimientos matematicos a codigo python...vamos
+
+# Calculo de L0 (saltando el x0...ES: L0(x))
+arriba0 = (x - x1) * (x - x2);
+abajo0 = (x0 - x1) * (x0 - x2);
+L0 = arriba0 / abajo0;
+
+# Calculo de L1 (saltando el x1..tambien)
+arriba1 = (x - x0) * (x - x2);
+abajo1 = (x1 - x0) * (x1 - x2);
+L1 = arriba1 / abajo1;
+
+# Calculo de L2 (saltando el x2...tambie{n)
+arriba2 = (x - x0) * (x - x1);
+abajo2 = (x2 - x0) * (x2 - x1);
+L2 = arriba2 / abajo2;
+
+# Imprimo esto para verificar si sale igual que en el pdf...
+print("Valor de L0:", L0);
+print("Valor de L1:", L1);
+print("Valor de L2:", L2);
+
+# 3. Paso tres: El polinomio final P(x)...
+# Simplemente multiplicamos la Y por su L correspondiente...Y finally
+Px = (y0 * L0) + (y1 * L1) + (y2 * L2);
+
+print("-----------------")
+print("El resultado final es:", Px);
