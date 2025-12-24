@@ -1,0 +1,37 @@
+# MÉTODO DEL TRAPECIO....mno de unidad 2
+
+# DATOS
+a = 0;
+b = 2;
+n = 4;
+
+print("MÉTODO DEL TRAPECO")
+print(f"Integral de (x² + 1) desde {a} hasta {b}")
+print(f"n = {n} subintervalos\n")
+
+# PASO 1: Calcular h...subintervalos
+h = (b - a) / n;
+print(f"h = {h}");
+
+# PASO 2: Generar los  puntos...
+x = [];
+for i in range(n + 1):
+    x.append(a + i * h);
+
+print(f"Puntos x: {x}");
+
+# PASO 3: Evaluar función...
+f = [];
+for xi in x:
+    f.append(xi**2 + 1);
+
+print(f"Valores f(x): {f}");
+
+# PASO 4: Aplicar fórmula....Todo..Solo los valores dl internos estan multiplcaos por dos
+resultados = (h / 2) * (f[0] + 2*f[1] + 2*f[2] + 2*f[3] + f[4]);
+
+print(f" Resultado = (0.5/2) * [1 + 2(1.25) + 2(2) + 2(3.25) + 5]");
+print(f"           = 0.25 * [1 + 2.5 + 4 + 6.5 + 5]");
+print(f"           = 0.25 * 19");
+print(f"           = {resultados}");
+print("LISTO!");
