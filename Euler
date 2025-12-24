@@ -1,0 +1,38 @@
+# Metodo de Euler
+# Ejemplo: dy/dx = x + y, con y(0) = 1
+
+# Definir la funcion f(x,y)
+def f(x, y):
+    resultado = x + y;
+    return resultado;
+
+# Datos iniciales
+x0 = 0.0;
+y0 = 1.0;
+h = 0.1;
+xf = 0.5;
+
+# Valores actuales
+x = x0;
+y = y0;
+
+print("Metodo de euler");
+print("----------");
+print("Solucion de dy/dx = x + y");
+print("Condicion inicial: y(0) = 1");
+print("Paso h =", h);
+print("x    y");
+print(x, "    ", y);
+
+# Ciclo principal
+while x < xf:
+    # Formula de Euler: y_nuevo = y_viejo + h * f(x, y)
+    y = y + h * f(x, y);
+    
+    # Avanzar x
+    x = x + h;
+    
+    # Mostrar resultado
+    print(x, "     ", y);
+
+print("Resultado final: y(", xf, ") =", y);
