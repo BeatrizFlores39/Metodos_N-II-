@@ -1,0 +1,49 @@
+# Metodo de Taylor...orden dso
+# Ejemplo: dy/dx = x + y, con y(0) = 1...DEl Document
+
+# Definir la funcion f(x,y) = dy/dx..para
+def f(x, y):
+    resultado = x + y;
+    return resultado;
+
+# Definir la segunda derivade para calcular
+# Para dy/dx = x + y, la segunda derivada es:
+# d2y/dx2 = 1 + dy/dx = 1 + (x + y)
+def f2(x, y):
+    resultado = 1 + x + y;
+    return resultado;
+
+# Datos iniciales
+x0 = 0.0;
+y0 = 1.0;
+h = 0.1;
+xf = 0.5;
+
+# Valores iniciales...actuales
+x = x0;
+y = y0;
+
+print("Metodo de taylor (Orden 2)");
+print("-----------");
+print("Solucion de dy/dx = x + y");
+print("Condicion inicial: y(0) = 1");
+print("Paso h =", h);
+print(f"x= {x} y Y={y}");
+#print(x,"          " ,y)
+
+while x < xf:
+    # Formula de Taylor orden 2: y_nuevo = y + h*f(x,y) + (h^2/2)*f2(x,Y)
+    
+    termino1 = h * f(x, y);
+    termino2 = (h * h / 2) * f2(x, y);
+    
+    y = y + termino1 + termino2; #Suman
+    
+    # Avanzar x
+    x = x + h;
+    
+    # Mostrar resultado
+    print(x, "           ", y);
+
+print("Resultado final: y(", xf, ") =", y);
+#LISTO!
