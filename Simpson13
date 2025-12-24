@@ -1,0 +1,40 @@
+import math
+
+print("--- METODO DE SIMPSON 1/3 ---");
+
+
+def f(x):
+    return math.exp(x);  # Ejemplo: e^x
+    
+# PASO1: Definir limites de integraciion
+a = 0 ;
+b = 1 ;
+# PASO2: Numero de subintervalos (n debe ser PAR)
+n = 4 ;
+
+# PASO3: Calcular el ancho h
+# Formula: (b - a) / n
+h = (b - a) / n;
+print("El valor de h es:", h);
+
+# PASO4,5y6: Calcular la sum
+suma = f(a) + f(b);
+
+for i in range(1, n):
+
+    xi = a + (i * h);
+    valor_y = f(xi)
+    
+    if i % 2 != 0: # Es IMPAR
+        suma = suma + (4 * valor_y);
+        print(f"Nodo {i} (Impar): x={xi} -> f(x)={valor_y} (x4)");
+        
+    else: # Es PAR
+        suma = suma + (2 * valor_y);
+        print(f"Nodo {i} (Par):   x={xi} -> f(x)={valor_y} (x2)");
+
+# Resultado final: Multiplicar todo por h/3
+resultado = (h / 3) * suma;
+
+print("---------------------------------");
+print("El resultado de la integral es:", resultado);
